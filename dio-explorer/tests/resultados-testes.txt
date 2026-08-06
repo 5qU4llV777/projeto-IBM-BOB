@@ -1,0 +1,62 @@
+════════════════════════════════════════════════════════════
+  RESULTADOS DOS TESTES UNITÁRIOS — DIO Explorer Skills
+  Executado em: 06/08/2026, 17:45:58
+════════════════════════════════════════════════════════════
+
+════════════════════════════════════════════════════════════
+  BLOCO 1 — /trilha Java  (buscar-trilha.js)
+════════════════════════════════════════════════════════════
+  [✅ PASSOU] T01 — script executa sem erro para 'Java'
+  [✅ PASSOU] T02 — retorno é um JSON válido
+  [✅ PASSOU] T03 — resultado é um Array — object
+  [✅ PASSOU] T04 — encontrou ≥ 3 trilhas para 'Java' — encontrou 9
+  [✅ PASSOU] T05 — trilha "Java Completo: POO e Spring Boot" presente
+  [✅ PASSOU] T06 — trilha "Microserviços com Spring Cloud" presente
+  [✅ PASSOU] T07 — todas as trilhas possuem campos obrigatórios
+  [✅ PASSOU] T08 — campo 'tecnologias' é Array em todas as trilhas
+  [✅ PASSOU] T09 — 'duracao_horas' é número > 0 em todas as trilhas
+  [✅ PASSOU] T10 — sem argumento retorna JSON de erro
+  [✅ PASSOU] T11 — tecnologia inexistente retorna array vazio
+
+════════════════════════════════════════════════════════════
+  BLOCO 2 — /desafio  (gerar-desafio.js)
+════════════════════════════════════════════════════════════
+  [✅ PASSOU] T-D1 [iniciante] — script executa sem erro
+  [✅ PASSOU] T-D2 [iniciante] — retorno é JSON válido
+  [✅ PASSOU] T-D3 [iniciante] — possui todos os campos obrigatórios
+  [✅ PASSOU] T-D4 [iniciante] — campo 'enunciado' não está vazio
+  [✅ PASSOU] T-D1 [intermediario] — script executa sem erro
+  [✅ PASSOU] T-D2 [intermediario] — retorno é JSON válido
+  [✅ PASSOU] T-D3 [intermediario] — possui todos os campos obrigatórios
+  [✅ PASSOU] T-D4 [intermediario] — campo 'enunciado' não está vazio
+  [✅ PASSOU] T-D1 [avancado] — script executa sem erro
+  [✅ PASSOU] T-D2 [avancado] — retorno é JSON válido
+  [✅ PASSOU] T-D3 [avancado] — possui todos os campos obrigatórios
+  [✅ PASSOU] T-D4 [avancado] — campo 'enunciado' não está vazio
+  [✅ PASSOU] T-D5 — sem argumento usa nível 'iniciante' como padrão
+  [✅ PASSOU] T-D6 — 'avancado' (sem acento) normalizado para 'avançado'
+  [✅ PASSOU] T-D7 — nível inválido cai em 'iniciante' sem crashar
+
+════════════════════════════════════════════════════════════
+  BLOCO 3 — /certificado  (gerar-certificado.js)
+════════════════════════════════════════════════════════════
+  [✅ PASSOU] T-C1 — script executa sem erro
+  [✅ PASSOU] T-C2 — retorno é JSON válido
+  [✅ PASSOU] T-C3 — campo 'nome' corresponde ao aluno informado
+  [✅ PASSOU] T-C4 — campo 'trilha' corresponde à trilha informada
+  [✅ PASSOU] T-C5 — campo 'data' está preenchido
+  [✅ PASSOU] T-C6 — campo 'codigo' segue o padrão DIO-XXXX-XXXX — DIO-AU64-IBAJ
+  [✅ PASSOU] T-C7 — 'carga_horaria' é número > 0 — 40
+  [✅ PASSOU] T-C8 — carga_horaria reflete primeiro match do trilhas.json para 'Java' (40h) — obtido: 40
+  [✅ PASSOU] T-C9 — sem argumentos retorna JSON de erro
+  [✅ PASSOU] T-C10 — trilha sem match usa carga_horaria fallback (40h) — obtido: 40
+
+════════════════════════════════════════════════════════════
+  SUMÁRIO DOS TESTES
+════════════════════════════════════════════════════════════
+  Total de testes : 36
+  ✅ Aprovados     : 36
+  ❌ Reprovados    : 0
+  📊 Aprovação     : 100.0%
+  🎯 Meta (≥ 70%) : ✅ ATINGIDA
+════════════════════════════════════════════════════════════

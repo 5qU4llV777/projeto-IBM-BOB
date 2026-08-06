@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "dio-explorer": {
+      "command": "node",
+      "args": [
+        "/home/dragonborn/Documents/projeto-IBM-BOB/dio-explorer/mcp/dist/index.js"
+      ]
+    }
+  }
+}

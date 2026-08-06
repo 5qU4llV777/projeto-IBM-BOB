@@ -1,0 +1,274 @@
+{
+  "trilhas": [
+    {
+      "id": 1,
+      "titulo": "Fundamentos de Python",
+      "categoria": "Programação",
+      "nivel": "Iniciante",
+      "duracao_horas": 20,
+      "descricao": "Aprenda os fundamentos da linguagem Python, desde variáveis até funções e estruturas de dados.",
+      "tecnologias": ["Python"]
+    },
+    {
+      "id": 2,
+      "titulo": "Desenvolvimento Web com HTML, CSS e JavaScript",
+      "categoria": "Front-end",
+      "nivel": "Iniciante",
+      "duracao_horas": 40,
+      "descricao": "Domine as bases do desenvolvimento web moderno com HTML5, CSS3 e JavaScript puro.",
+      "tecnologias": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "id": 3,
+      "titulo": "React do Zero ao Avançado",
+      "categoria": "Front-end",
+      "nivel": "Intermediário",
+      "duracao_horas": 60,
+      "descricao": "Construa aplicações modernas com React, Hooks, Context API e integração com APIs REST.",
+      "tecnologias": ["React", "JavaScript", "Node.js"]
+    },
+    {
+      "id": 4,
+      "titulo": "Back-end com Node.js e Express",
+      "categoria": "Back-end",
+      "nivel": "Intermediário",
+      "duracao_horas": 50,
+      "descricao": "Crie APIs RESTful robustas utilizando Node.js, Express e bancos de dados relacionais.",
+      "tecnologias": ["Node.js", "Express", "PostgreSQL"]
+    },
+    {
+      "id": 5,
+      "titulo": "Banco de Dados SQL com PostgreSQL",
+      "categoria": "Banco de Dados",
+      "nivel": "Iniciante",
+      "duracao_horas": 25,
+      "descricao": "Aprenda a modelar, criar e consultar bancos de dados relacionais com PostgreSQL.",
+      "tecnologias": ["PostgreSQL", "SQL"]
+    },
+    {
+      "id": 6,
+      "titulo": "DevOps com Docker e Kubernetes",
+      "categoria": "DevOps",
+      "nivel": "Avançado",
+      "duracao_horas": 70,
+      "descricao": "Aprenda a containerizar aplicações e orquestrar ambientes com Docker e Kubernetes.",
+      "tecnologias": ["Docker", "Kubernetes", "Linux"]
+    },
+    {
+      "id": 7,
+      "titulo": "Cloud Computing com AWS",
+      "categoria": "Cloud",
+      "nivel": "Intermediário",
+      "duracao_horas": 55,
+      "descricao": "Explore os principais serviços da AWS: EC2, S3, Lambda, RDS e muito mais.",
+      "tecnologias": ["AWS", "Cloud", "Linux"]
+    },
+    {
+      "id": 8,
+      "titulo": "Machine Learning com Scikit-learn",
+      "categoria": "Inteligência Artificial",
+      "nivel": "Intermediário",
+      "duracao_horas": 45,
+      "descricao": "Implemente modelos de Machine Learning usando Python e a biblioteca Scikit-learn.",
+      "tecnologias": ["Python", "Scikit-learn", "Pandas"]
+    },
+    {
+      "id": 9,
+      "titulo": "Deep Learning com TensorFlow",
+      "categoria": "Inteligência Artificial",
+      "nivel": "Avançado",
+      "duracao_horas": 80,
+      "descricao": "Construa redes neurais profundas para visão computacional e processamento de linguagem natural.",
+      "tecnologias": ["Python", "TensorFlow", "Keras"]
+    },
+    {
+      "id": 10,
+      "titulo": "Desenvolvimento Mobile com Flutter",
+      "categoria": "Mobile",
+      "nivel": "Intermediário",
+      "duracao_horas": 60,
+      "descricao": "Crie aplicativos multiplataforma para Android e iOS com Flutter e Dart.",
+      "tecnologias": ["Flutter", "Dart"]
+    },
+    {
+      "id": 11,
+      "titulo": "Java Completo: POO e Spring Boot",
+      "categoria": "Back-end",
+      "nivel": "Intermediário",
+      "duracao_horas": 75,
+      "descricao": "Domine a linguagem Java com foco em orientação a objetos e desenvolvimento com Spring Boot.",
+      "tecnologias": ["Java", "Spring Boot", "Maven"]
+    },
+    {
+      "id": 12,
+      "titulo": "Segurança da Informação e Ethical Hacking",
+      "categoria": "Segurança",
+      "nivel": "Avançado",
+      "duracao_horas": 65,
+      "descricao": "Aprenda conceitos de cibersegurança, pentest e proteção de sistemas e redes.",
+      "tecnologias": ["Linux", "Kali Linux", "Python"]
+    },
+    {
+      "id": 13,
+      "titulo": "Engenharia de Dados com Apache Spark",
+      "categoria": "Data Engineering",
+      "nivel": "Avançado",
+      "duracao_horas": 70,
+      "descricao": "Processe grandes volumes de dados com Apache Spark, PySpark e pipelines de dados.",
+      "tecnologias": ["Apache Spark", "PySpark", "Python"]
+    },
+    {
+      "id": 14,
+      "titulo": "TypeScript para Desenvolvedores JavaScript",
+      "categoria": "Programação",
+      "nivel": "Intermediário",
+      "duracao_horas": 30,
+      "descricao": "Adicione tipagem estática ao seu JavaScript com TypeScript e melhore a qualidade do código.",
+      "tecnologias": ["TypeScript", "JavaScript"]
+    },
+    {
+      "id": 15,
+      "titulo": "Angular: Framework Front-end Corporativo",
+      "categoria": "Front-end",
+      "nivel": "Intermediário",
+      "duracao_horas": 55,
+      "descricao": "Desenvolva aplicações empresariais escaláveis com Angular, RxJS e Angular Material.",
+      "tecnologias": ["Angular", "TypeScript", "RxJS"]
+    },
+    {
+      "id": 16,
+      "titulo": "Microserviços com Spring Cloud",
+      "categoria": "Arquitetura",
+      "nivel": "Avançado",
+      "duracao_horas": 65,
+      "descricao": "Projete e implemente arquiteturas de microserviços com Spring Cloud, Eureka e API Gateway.",
+      "tecnologias": ["Java", "Spring Cloud", "Docker"]
+    },
+    {
+      "id": 17,
+      "titulo": "Data Science com Python",
+      "categoria": "Ciência de Dados",
+      "nivel": "Intermediário",
+      "duracao_horas": 50,
+      "descricao": "Analise dados, crie visualizações e extraia insights com Python, Pandas e Matplotlib.",
+      "tecnologias": ["Python", "Pandas", "Matplotlib", "Jupyter"]
+    },
+    {
+      "id": 18,
+      "titulo": "Git e GitHub para Iniciantes",
+      "categoria": "Ferramentas",
+      "nivel": "Iniciante",
+      "duracao_horas": 15,
+      "descricao": "Aprenda controle de versão com Git e colabore em projetos usando o GitHub.",
+      "tecnologias": ["Git", "GitHub"]
+    },
+    {
+      "id": 19,
+      "titulo": "Vue.js 3: Composição e Reatividade",
+      "categoria": "Front-end",
+      "nivel": "Intermediário",
+      "duracao_horas": 45,
+      "descricao": "Construa interfaces reativas com Vue.js 3, Composition API e Pinia.",
+      "tecnologias": ["Vue.js", "JavaScript", "Pinia"]
+    },
+    {
+      "id": 20,
+      "titulo": "CI/CD com GitHub Actions",
+      "categoria": "DevOps",
+      "nivel": "Intermediário",
+      "duracao_horas": 30,
+      "descricao": "Automatize pipelines de integração e entrega contínua com GitHub Actions.",
+      "tecnologias": ["GitHub Actions", "Docker", "YAML"]
+    },
+    {
+      "id": 21,
+      "titulo": "MongoDB e NoSQL para Desenvolvedores",
+      "categoria": "Banco de Dados",
+      "nivel": "Iniciante",
+      "duracao_horas": 25,
+      "descricao": "Explore bancos de dados não relacionais com MongoDB, modelagem de documentos e aggregations.",
+      "tecnologias": ["MongoDB", "NoSQL", "JavaScript"]
+    },
+    {
+      "id": 22,
+      "titulo": "Kotlin para Android",
+      "categoria": "Mobile",
+      "nivel": "Intermediário",
+      "duracao_horas": 55,
+      "descricao": "Desenvolva aplicativos Android nativos com Kotlin, Jetpack Compose e Android SDK.",
+      "tecnologias": ["Kotlin", "Android", "Jetpack Compose"]
+    },
+    {
+      "id": 23,
+      "titulo": "Inteligência Artificial Generativa com LLMs",
+      "categoria": "Inteligência Artificial",
+      "nivel": "Avançado",
+      "duracao_horas": 40,
+      "descricao": "Explore modelos de linguagem de grande escala, prompt engineering e integração com APIs de IA.",
+      "tecnologias": ["Python", "OpenAI API", "LangChain"]
+    },
+    {
+      "id": 24,
+      "titulo": "Linux Essencial para Desenvolvedores",
+      "categoria": "Infraestrutura",
+      "nivel": "Iniciante",
+      "duracao_horas": 20,
+      "descricao": "Domine o terminal Linux, gerenciamento de arquivos, permissões e scripts shell.",
+      "tecnologias": ["Linux", "Bash"]
+    },
+    {
+      "id": 25,
+      "titulo": "C# e .NET: Desenvolvimento Completo",
+      "categoria": "Back-end",
+      "nivel": "Intermediário",
+      "duracao_horas": 70,
+      "descricao": "Desenvolva aplicações robustas com C#, .NET 8, Entity Framework e ASP.NET Core.",
+      "tecnologias": ["C#", ".NET", "Entity Framework"]
+    },
+    {
+      "id": 26,
+      "titulo": "Power BI para Análise de Dados",
+      "categoria": "Business Intelligence",
+      "nivel": "Iniciante",
+      "duracao_horas": 30,
+      "descricao": "Crie dashboards e relatórios interativos com Power BI e DAX.",
+      "tecnologias": ["Power BI", "DAX", "Excel"]
+    },
+    {
+      "id": 27,
+      "titulo": "Arquitetura Hexagonal e Domain-Driven Design",
+      "categoria": "Arquitetura",
+      "nivel": "Avançado",
+      "duracao_horas": 50,
+      "descricao": "Aplique padrões arquiteturais como Hexagonal Architecture, DDD e Clean Architecture em projetos reais.",
+      "tecnologias": ["Java", "Python", "Design Patterns"]
+    },
+    {
+      "id": 28,
+      "titulo": "Terraform e Infraestrutura como Código",
+      "categoria": "DevOps",
+      "nivel": "Avançado",
+      "duracao_horas": 45,
+      "descricao": "Provisione e gerencie infraestrutura em nuvem de forma automatizada com Terraform.",
+      "tecnologias": ["Terraform", "AWS", "Azure"]
+    },
+    {
+      "id": 29,
+      "titulo": "Testes Automatizados com Jest e Cypress",
+      "categoria": "Qualidade de Software",
+      "nivel": "Intermediário",
+      "duracao_horas": 35,
+      "descricao": "Escreva testes unitários, de integração e end-to-end com Jest e Cypress.",
+      "tecnologias": ["Jest", "Cypress", "JavaScript"]
+    },
+    {
+      "id": 30,
+      "titulo": "Blockchain e Web3 para Desenvolvedores",
+      "categoria": "Blockchain",
+      "nivel": "Avançado",
+      "duracao_horas": 60,
+      "descricao": "Entenda os fundamentos de blockchain, smart contracts com Solidity e desenvolvimento Web3.",
+      "tecnologias": ["Solidity", "Ethereum", "Web3.js"]
+    }
+  ]
+}

@@ -1,0 +1,776 @@
+
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DIO Explorer × IBM Bob — Documentação</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    background: #ffffff;
+    color: #1f2328;
+    padding: 32px 16px 48px;
+  }
+  .page { max-width: 760px; margin: 0 auto; }
+
+  /* ── Header ── */
+  .hero {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 28px 28px 22px;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 22px; font-weight: 700; color: #1f2328; }
+  .hero .sub { color: #57606a; font-size: 13px; margin-top: 6px; }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 14px; }
+  .badge {
+    background: #3b82d4;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.3px;
+  }
+  .badge.purple { background: #7c5cd8; }
+  .badge.green  { background: #2da44e; }
+  .badge.gray   { background: #57606a; }
+
+  /* ── Sections ── */
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2328;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 6px;
+    margin: 32px 0 14px;
+  }
+  h3 { font-size: 14px; font-weight: 700; color: #1f2328; margin: 20px 0 8px; }
+  h4 { font-size: 13px; font-weight: 600; color: #3b82d4; margin: 14px 0 6px; }
+  p { margin-bottom: 10px; color: #1f2328; }
+  ul, ol { padding-left: 22px; margin-bottom: 10px; }
+  li { margin-bottom: 4px; }
+
+  /* ── Code ── */
+  code {
+    background: #f0f2f4;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    font-size: 12px;
+    color: #cf222e;
+  }
+  pre {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    font-size: 12px;
+    overflow-x: auto;
+    margin-bottom: 14px;
+    color: #1f2328;
+    line-height: 1.55;
+  }
+  pre .comment { color: #57606a; }
+  pre .key { color: #0550ae; }
+  pre .str { color: #116329; }
+
+  /* ── Tables ── */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 13px; }
+  th {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #1f2328;
+  }
+  td { border: 1px solid #e5e7eb; padding: 8px 12px; color: #1f2328; vertical-align: top; }
+  tr:nth-child(even) td { background: #fafbfc; }
+
+  /* ── Callouts ── */
+  .callout {
+    border-left: 4px solid #3b82d4;
+    background: #f0f6ff;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 14px;
+  }
+  .callout.tip  { border-color: #2da44e; background: #f0faf3; }
+  .callout.warn { border-color: #bc4c00; background: #fff8f0; }
+  .callout.purple { border-color: #7c5cd8; background: #f8f4ff; }
+  .callout strong { color: #1f2328; }
+
+  /* ── Prompt boxes ── */
+  .prompt-box {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    font-style: italic;
+    color: #57606a;
+    font-size: 13px;
+  }
+  .prompt-box::before {
+    content: "💬 ";
+    font-style: normal;
+  }
+
+  /* ── Flow diagram ── */
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    margin: 12px 0;
+    font-size: 12px;
+  }
+  .flow-step {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-weight: 600;
+    color: #1f2328;
+  }
+  .flow-arrow { color: #3b82d4; font-weight: 700; font-size: 14px; }
+
+  /* ── TOC ── */
+  .toc {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .toc h3 { margin-top: 0; font-size: 13px; color: #57606a; text-transform: uppercase; letter-spacing: 0.5px; }
+  .toc ol { margin-bottom: 0; }
+  .toc li { margin-bottom: 2px; }
+  .toc a { color: #3b82d4; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+
+  /* ── Test result ── */
+  .test-pass { color: #2da44e; font-weight: 700; }
+  .test-fail { color: #cf222e; font-weight: 700; }
+  .stat-row { display: flex; gap: 24px; flex-wrap: wrap; margin: 12px 0; }
+  .stat {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 10px 16px;
+    text-align: center;
+    min-width: 100px;
+  }
+  .stat .num { font-size: 22px; font-weight: 700; color: #2da44e; }
+  .stat .label { font-size: 11px; color: #57606a; margin-top: 2px; }
+
+  /* ── Insight card ── */
+  .insight-card {
+    background: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .insight-card .num {
+    display: inline-block;
+    background: #7c5cd8;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    margin-right: 8px;
+  }
+  .insight-card .title { font-weight: 700; font-size: 13px; }
+  .insight-card p { margin: 6px 0 0; color: #57606a; font-size: 13px; }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+    font-size: 11px;
+    color: #57606a;
+  }
+
+  .divider { border: none; border-top: 1px solid #e5e7eb; margin: 28px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  
+  <div class="hero">
+    <h1>DIO Explorer × IBM Bob</h1>
+    <div class="sub">Documentação completa do projeto — arquitetura, prompts, modos de uso, dicas e insights</div>
+    <div class="badge-row">
+      <span class="badge">MCP Server</span>
+      <span class="badge purple">Bob AI Agent</span>
+      <span class="badge green">TypeScript</span>
+      <span class="badge green">Node.js</span>
+      <span class="badge gray">Skills</span>
+      <span class="badge gray">100% testes ✓</span>
+    </div>
+  </div>
+
+  
+  <div class="toc">
+    <h3>Índice</h3>
+    <ol>
+      <li><a href="#visao-geral">Visão Geral do Projeto</a></li>
+      <li><a href="#arquitetura">Arquitetura e Estrutura de Arquivos</a></li>
+      <li><a href="#mcp-server">Servidor MCP — DIO Explorer</a></li>
+      <li><a href="#ferramentas">Ferramentas MCP Disponíveis</a></li>
+      <li><a href="#skills">Skills do Bob</a></li>
+      <li><a href="#prompts">Prompts Utilizados — Catálogo Completo</a></li>
+      <li><a href="#modos">Modos de Uso do Bob</a></li>
+      <li><a href="#fluxo">Fluxo de Interação</a></li>
+      <li><a href="#testes">Testes Automatizados</a></li>
+      <li><a href="#configuracao">Configuração e Instalação</a></li>
+      <li><a href="#dados">Catálogo de Trilhas</a></li>
+      <li><a href="#dicas">Dicas de Uso</a></li>
+      <li><a href="#insights">Insights para Futuros Profissionais</a></li>
+    </ol>
+  </div>
+
+  
+  <h2 id="visao-geral">1. Visão Geral do Projeto</h2>
+  <p>
+    Este projeto conecta o <strong>IBM Bob</strong> (agente de IA baseado no Model Context Protocol)
+    ao <strong>DIO Explorer</strong>, um catálogo educacional com 30 trilhas de aprendizado,
+    gerador de desafios de código e emissor de certificados fictícios de conclusão.
+  </p>
+  <p>
+    A integração é feita por meio de um <strong>servidor MCP customizado</strong> escrito em TypeScript
+    que expõe 4 ferramentas, e por <strong>3 Skills</strong> configuradas no Bob que orquestram
+    a experiência conversacional do usuário.
+  </p>
+
+  <div class="callout">
+    <strong>Objetivo central:</strong> Demonstrar, de forma prática, como construir um servidor MCP
+    do zero, registrá-lo no Bob, e criar Skills que transformam ferramentas técnicas em experiências
+    conversacionais ricas para o usuário final.
+  </div>
+
+  <table>
+    <tr><th>Camada</th><th>Tecnologia</th><th>Responsabilidade</th></tr>
+    <tr><td>Agente</td><td>IBM Bob (MCP Client)</td><td>Interpreta linguagem natural e orquestra ferramentas</td></tr>
+    <tr><td>Protocolo</td><td>MCP (Model Context Protocol)</td><td>Comunicação estruturada entre agente e servidor</td></tr>
+    <tr><td>Servidor</td><td>Node.js + TypeScript</td><td>Implementa as ferramentas (tools) do DIO Explorer</td></tr>
+    <tr><td>Dados</td><td>JSON flat file</td><td>Catálogo de trilhas (<code>trilhas.json</code>)</td></tr>
+    <tr><td>Skills</td><td>SKILL.md + .js scripts</td><td>Comandos de atalho <code>/trilha</code>, <code>/desafio</code>, <code>/certificado</code></td></tr>
+  </table>
+
+  
+  <h2 id="arquitetura">2. Arquitetura e Estrutura de Arquivos</h2>
+
+  <pre>projeto-IBM-BOB/
+├── .bob/                          <span class="comment"># Configurações do Bob</span>
+│   ├── mcp.json                   <span class="comment"># Registro do servidor MCP</span>
+│   └── skills/
+│       ├── trilha/
+│       │   ├── SKILL.md           <span class="comment"># Instrução da skill /trilha</span>
+│       │   └── buscar-trilha.js   <span class="comment"># Script Node de busca</span>
+│       ├── desafio/
+│       │   ├── SKILL.md           <span class="comment"># Instrução da skill /desafio</span>
+│       │   └── gerar-desafio.js   <span class="comment"># Script Node de geração</span>
+│       └── certificado/
+│           ├── SKILL.md           <span class="comment"># Instrução da skill /certificado</span>
+│           └── gerar-certificado.js
+├── .bobignore                     <span class="comment"># Arquivos ignorados pelo Bob</span>
+├── README.md                      <span class="comment"># Raiz do projeto</span>
+└── dio-explorer/
+    ├── data/
+    │   └── trilhas.json           <span class="comment"># 30 trilhas de aprendizado</span>
+    ├── docs/                      <span class="comment"># Certificados gerados (opcional)</span>
+    ├── mcp/
+    │   ├── src/
+    │   │   ├── index.ts           <span class="comment"># Bootstrap do servidor MCP</span>
+    │   │   ├── tools.ts           <span class="comment"># Implementação das 4 tools</span>
+    │   │   └── types.ts           <span class="comment"># Interfaces TypeScript</span>
+    │   ├── dist/                  <span class="comment"># Build compilado (gerado pelo tsc)</span>
+    │   ├── package.json
+    │   ├── tsconfig.json
+    │   └── README.md
+    └── tests/
+        ├── skills.test.js         <span class="comment"># 36 testes unitários</span>
+        └── resultados-testes.txt  <span class="comment"># Último resultado dos testes</span></pre>
+
+  
+  <h2 id="mcp-server">3. Servidor MCP — DIO Explorer</h2>
+  <p>
+    O servidor é implementado em TypeScript usando o SDK oficial
+    <code>@modelcontextprotocol/sdk v0.5.0</code> e se comunica via
+    <strong>transporte stdio</strong> (stdin/stdout), que é o modo padrão para servidores locais
+    registrados no Bob.
+  </p>
+
+  <h3>Registro no Bob (<code>.bob/mcp.json</code>)</h3>
+  <pre>{
+  <span class="key">"mcpServers"</span>: {
+    <span class="key">"dio-explorer"</span>: {
+      <span class="key">"command"</span>: <span class="str">"node"</span>,
+      <span class="key">"args"</span>: [<span class="str">"/caminho/absoluto/.../dio-explorer/mcp/dist/index.js"</span>]
+    }
+  }
+}</pre>
+
+  <div class="callout tip">
+    <strong>Por que stdio?</strong> O transporte stdio é o mais simples: o Bob inicia o processo
+    <code>node dist/index.js</code>, troca mensagens JSON pelo pipe e encerra o processo quando
+    a conversa termina. Não requer porta de rede nem autenticação para uso local.
+  </div>
+
+  <h3>Dependências principais</h3>
+  <table>
+    <tr><th>Pacote</th><th>Versão</th><th>Uso</th></tr>
+    <tr><td><code>@modelcontextprotocol/sdk</code></td><td>^0.5.0</td><td>Protocolo MCP (Server, transport, schemas)</td></tr>
+    <tr><td><code>zod</code></td><td>^3.22.4</td><td>Validação de schemas de entrada das tools</td></tr>
+    <tr><td><code>dotenv</code></td><td>^16.3.1</td><td>Variáveis de ambiente</td></tr>
+    <tr><td><code>express</code></td><td>^4.18.2</td><td>HTTP transport (preparado para uso futuro)</td></tr>
+    <tr><td><code>jsonwebtoken</code></td><td>^9.0.2</td><td>Autenticação JWT (preparado para uso futuro)</td></tr>
+  </table>
+
+  
+  <h2 id="ferramentas">4. Ferramentas MCP Disponíveis</h2>
+  <p>O servidor expõe 4 ferramentas que o Bob pode invocar automaticamente ao entender a intenção do usuário.</p>
+
+  <h3>buscar_trilha</h3>
+  <p>Busca trilhas por nome de tecnologia, título ou categoria. Realiza busca case-insensitive nos campos <code>titulo</code>, <code>categoria</code> e <code>tecnologias</code>.</p>
+  <table>
+    <tr><th>Parâmetro</th><th>Tipo</th><th>Obrigatório</th><th>Exemplo</th></tr>
+    <tr><td><code>tecnologia</code></td><td>string</td><td>Sim</td><td><code>"Java"</code>, <code>"Front-end"</code>, <code>"React"</code></td></tr>
+  </table>
+
+  <h3>listar_trilhas</h3>
+  <p>Lista todas as trilhas do catálogo com opção de filtro por categoria.</p>
+  <table>
+    <tr><th>Parâmetro</th><th>Tipo</th><th>Obrigatório</th><th>Exemplo</th></tr>
+    <tr><td><code>categoria</code></td><td>string</td><td>Não</td><td><code>"DevOps"</code>, <code>"Back-end"</code></td></tr>
+  </table>
+
+  <h3>gerar_desafio</h3>
+  <p>Gera um desafio de programação aleatório baseado em nível. Aceita strings com ou sem acento.</p>
+  <table>
+    <tr><th>Parâmetro</th><th>Tipo</th><th>Valores aceitos</th></tr>
+    <tr><td><code>nivel</code></td><td>enum</td><td><code>iniciante</code> · <code>intermediario</code> · <code>intermediário</code> · <code>avancado</code> · <code>avançado</code></td></tr>
+  </table>
+
+  <h3>gerar_certificado</h3>
+  <p>Gera um certificado fictício de conclusão com código de verificação único no padrão <code>DIO-XXXX-XXXX</code>. Busca automaticamente a carga horária real da trilha no catálogo.</p>
+  <table>
+    <tr><th>Parâmetro</th><th>Tipo</th><th>Obrigatório</th></tr>
+    <tr><td><code>nome</code></td><td>string</td><td>Sim — nome completo do aluno</td></tr>
+    <tr><td><code>trilha</code></td><td>string</td><td>Sim — nome ou tecnologia da trilha</td></tr>
+  </table>
+
+  
+  <h2 id="skills">5. Skills do Bob</h2>
+  <p>
+    Skills são extensões do Bob definidas em arquivos <code>SKILL.md</code>.
+    Elas mapeiam um <strong>comando de atalho</strong> (ex: <code>/trilha</code>) para uma
+    sequência de passos que o Bob executa: coletar argumentos, rodar scripts e formatar a resposta.
+  </p>
+
+  <div class="callout purple">
+    <strong>Onde ficam:</strong> <code>.bob/skills/&lt;nome&gt;/SKILL.md</code><br />
+    <strong>Formato:</strong> Frontmatter YAML com <code>name</code> e <code>description</code> + corpo Markdown com os passos.
+  </div>
+
+  <h3>/trilha [tecnologia]</h3>
+  <p>Busca trilhas e monta um <strong>Plano de Estudos completo</strong> com cronograma sugerido e próximos passos.</p>
+  <ul>
+    <li><strong>Passo 1:</strong> Obtém o argumento (tecnologia). Se omitido, pergunta ao usuário.</li>
+    <li><strong>Passo 2:</strong> Executa <code>node .bob/skills/trilha/buscar-trilha.js "&lt;tecnologia&gt;"</code></li>
+    <li><strong>Passo 3:</strong> Monta plano em Markdown com cronograma de 10h/semana.</li>
+    <li><strong>Passo 4:</strong> Se não encontrar, sugere tecnologias disponíveis.</li>
+  </ul>
+
+  <h3>/desafio [iniciante|intermediario|avancado]</h3>
+  <p>Gera um desafio aleatório e após o usuário resolver oferece opções de continuar.</p>
+  <ul>
+    <li><strong>Passo 1:</strong> Obtém o nível. Se omitido, apresenta 3 opções ao usuário.</li>
+    <li><strong>Passo 2:</strong> Executa <code>node .bob/skills/desafio/gerar-desafio.js "&lt;nivel&gt;"</code></li>
+    <li><strong>Passo 3:</strong> Formata enunciado, entrada, saída esperada, dica e exemplos.</li>
+    <li><strong>Passo 4:</strong> Oferece: ver solução / novo desafio / subir nível.</li>
+  </ul>
+
+  <h3>/certificado [nome] [trilha]</h3>
+  <p>Emite um certificado fictício em Markdown com código de verificação único.</p>
+  <ul>
+    <li><strong>Passo 1:</strong> Coleta nome e trilha. Pergunta se algum estiver faltando.</li>
+    <li><strong>Passo 2:</strong> Executa <code>node .bob/skills/certificado/gerar-certificado.js "&lt;nome&gt;" "&lt;trilha&gt;"</code></li>
+    <li><strong>Passo 3:</strong> Formata certificado estilizado em Markdown centralizado.</li>
+    <li><strong>Passo 4:</strong> Oferece salvar o arquivo em <code>dio-explorer/docs/</code>.</li>
+  </ul>
+
+  
+  <h2 id="prompts">6. Prompts Utilizados — Catálogo Completo</h2>
+  <p>
+    Abaixo estão categorizados todos os tipos de prompts e interações possíveis com o projeto,
+    desde comandos diretos até perguntas em linguagem natural que o Bob entende e encaminha
+    para as ferramentas corretas.
+  </p>
+
+  <h3>Comandos de Skill (atalhos)</h3>
+  <div class="prompt-box">/trilha Python</div>
+  <div class="prompt-box">/trilha React</div>
+  <div class="prompt-box">/trilha Java</div>
+  <div class="prompt-box">/trilha DevOps</div>
+  <div class="prompt-box">/desafio iniciante</div>
+  <div class="prompt-box">/desafio intermediario</div>
+  <div class="prompt-box">/desafio avancado</div>
+  <div class="prompt-box">/certificado João Silva Python</div>
+  <div class="prompt-box">/certificado Maria Oliveira Java</div>
+  <div class="prompt-box">/certificado (sem argumentos — Bob pergunta nome e trilha)</div>
+  <div class="prompt-box">/trilha (sem argumentos — Bob pergunta a tecnologia)</div>
+
+  <h3>Linguagem natural — Busca de trilhas</h3>
+  <div class="prompt-box">Quais trilhas existem de Machine Learning?</div>
+  <div class="prompt-box">Me mostra as trilhas de Front-end disponíveis</div>
+  <div class="prompt-box">Tem alguma trilha de Cloud na DIO?</div>
+  <div class="prompt-box">Quero aprender Docker, por onde começo?</div>
+  <div class="prompt-box">Lista todas as trilhas de Back-end</div>
+  <div class="prompt-box">Quais trilhas existem no catálogo?</div>
+  <div class="prompt-box">Tem trilha de TypeScript?</div>
+
+  <h3>Linguagem natural — Desafios</h3>
+  <div class="prompt-box">Me dá um desafio de código para iniciante</div>
+  <div class="prompt-box">Quero praticar com um exercício intermediário</div>
+  <div class="prompt-box">Gera um desafio avançado de programação</div>
+  <div class="prompt-box">Outro desafio do mesmo nível</div>
+  <div class="prompt-box">Quero um desafio mais difícil</div>
+
+  <h3>Linguagem natural — Certificados</h3>
+  <div class="prompt-box">Gera um certificado para Ana Costa que concluiu React</div>
+  <div class="prompt-box">Quero meu certificado da trilha de Python</div>
+  <div class="prompt-box">Emite um certificado de conclusão de Java para Pedro Lima</div>
+
+  <h3>Prompts de exploração do catálogo</h3>
+  <div class="prompt-box">Quais são as categorias disponíveis no catálogo?</div>
+  <div class="prompt-box">Qual trilha tem mais horas?</div>
+  <div class="prompt-box">Me dá uma trilha de nível iniciante</div>
+  <div class="prompt-box">Quero começar do zero, qual trilha você recomenda?</div>
+
+  <h3>Prompts usados durante o desenvolvimento</h3>
+  <div class="prompt-box">Crie um servidor MCP em TypeScript com as ferramentas buscar_trilha, listar_trilhas, gerar_desafio e gerar_certificado</div>
+  <div class="prompt-box">Crie a skill /trilha para o Bob que executa um script Node e monta um plano de estudos</div>
+  <div class="prompt-box">Escreva testes unitários para os scripts das três skills cobrindo casos de sucesso e falha</div>
+  <div class="prompt-box">Adicione mais desafios ao script gerar-desafio.js nos três níveis</div>
+  <div class="prompt-box">Documente todo o projeto com prompts usados, modos de uso e dicas</div>
+
+  
+  <h2 id="modos">7. Modos de Uso do Bob</h2>
+  <p>O Bob opera em três modos, cada um otimizado para um tipo diferente de tarefa:</p>
+
+  <table>
+    <tr><th>Modo</th><th>Quando usar</th><th>Acesso a tools</th></tr>
+    <tr>
+      <td><strong>Agent</strong></td>
+      <td>Escrever, modificar, executar código. Usar skills e ferramentas MCP. Implementar features.</td>
+      <td>Todas — inclui MCP, execute_command, write_file</td>
+    </tr>
+    <tr>
+      <td><strong>Plan</strong></td>
+      <td>Planejar arquitetura, criar especificações técnicas, decompor problemas complexos antes de codar.</td>
+      <td>Leitura + MCP (sem execute_command)</td>
+    </tr>
+    <tr>
+      <td><strong>Ask</strong></td>
+      <td>Fazer perguntas conceituais, entender código existente, obter recomendações sem modificar nada.</td>
+      <td>Somente leitura + MCP</td>
+    </tr>
+  </table>
+
+  <div class="callout tip">
+    <strong>Dica de uso dos modos:</strong> Para um projeto novo, use <strong>Plan</strong> para
+    arquitetar, <strong>Agent</strong> para implementar e <strong>Ask</strong> para revisar
+    e entender as decisões tomadas.
+  </div>
+
+  <h3>Como as Skills se encaixam nos modos</h3>
+  <p>As skills <code>/trilha</code>, <code>/desafio</code> e <code>/certificado</code> só funcionam
+  no modo <strong>Agent</strong>, pois precisam executar scripts via <code>execute_command</code>.
+  As ferramentas MCP (<code>buscar_trilha</code>, <code>gerar_desafio</code>, etc.) estão disponíveis
+  em todos os modos.</p>
+
+  
+  <h2 id="fluxo">8. Fluxo de Interação</h2>
+
+  <h4>Via Skill (ex: <code>/trilha Python</code>)</h4>
+  <div class="flow">
+    <div class="flow-step">Usuário digita /trilha Python</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Bob ativa SKILL.md</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">execute_command buscar-trilha.js</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Filtra trilhas.json</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Bob formata plano</div>
+  </div>
+
+  <h4>Via Ferramenta MCP (linguagem natural)</h4>
+  <div class="flow">
+    <div class="flow-step">Usuário: "trilhas de Front-end?"</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Bob decide: listar_trilhas</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">MCP stdio call</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">tools.ts filtra JSON</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Bob formata resposta</div>
+  </div>
+
+  <h4>Via Ferramenta MCP — Certificado</h4>
+  <div class="flow">
+    <div class="flow-step">Usuário: "certif. para Ana / React"</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">gerar_certificado(nome, trilha)</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Busca carga horária no JSON</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Gera código DIO-XXXX-XXXX</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">Bob exibe certificado</div>
+  </div>
+
+  
+  <h2 id="testes">9. Testes Automatizados</h2>
+  <p>
+    O projeto conta com <strong>36 testes unitários</strong> cobrindo as 3 skills, com foco em
+    comportamentos de sucesso, borda e falha.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat"><div class="num">36</div><div class="label">Total de testes</div></div>
+    <div class="stat"><div class="num">36</div><div class="label">Aprovados</div></div>
+    <div class="stat"><div class="num" style="color:#cf222e">0</div><div class="label">Reprovados</div></div>
+    <div class="stat"><div class="num">100%</div><div class="label">Aprovação</div></div>
+  </div>
+
+  <h3>Cobertura por bloco</h3>
+  <table>
+    <tr><th>Bloco</th><th>Testes</th><th>O que cobre</th></tr>
+    <tr>
+      <td>Bloco 1 — /trilha</td><td>T01 – T11 (11 testes)</td>
+      <td>Execução do script, retorno JSON válido, array, campos obrigatórios, busca sem argumento, tecnologia inexistente</td>
+    </tr>
+    <tr>
+      <td>Bloco 2 — /desafio</td><td>T-D1 – T-D7 (15 testes)</td>
+      <td>3 níveis × 4 asserts + nível padrão, normalização de acento, nível inválido com fallback</td>
+    </tr>
+    <tr>
+      <td>Bloco 3 — /certificado</td><td>T-C1 – T-C10 (10 testes)</td>
+      <td>Execução, JSON válido, nome/trilha corretos, data preenchida, padrão do código, carga horária real e fallback</td>
+    </tr>
+  </table>
+
+  <h3>Como executar os testes</h3>
+  <pre>node dio-explorer/tests/skills.test.js</pre>
+  <p>O resultado é gravado automaticamente em <code>dio-explorer/tests/resultados-testes.txt</code>.</p>
+
+  
+  <h2 id="configuracao">10. Configuração e Instalação</h2>
+
+  <h3>Pré-requisitos</h3>
+  <ul>
+    <li>Node.js ≥ 18</li>
+    <li>npm ≥ 9</li>
+    <li>IBM Bob instalado e configurado</li>
+  </ul>
+
+  <h3>Passo a passo</h3>
+  <pre><span class="comment"># 1. Clone o repositório</span>
+git clone &lt;url-do-repo&gt; projeto-IBM-BOB
+cd projeto-IBM-BOB
+
+<span class="comment"># 2. Instale as dependências do MCP server</span>
+cd dio-explorer/mcp
+npm install
+
+<span class="comment"># 3. Compile o TypeScript</span>
+npm run build
+
+<span class="comment"># 4. Configure o caminho no .bob/mcp.json</span>
+<span class="comment"># Ajuste para o caminho absoluto correto na sua máquina</span>
+
+<span class="comment"># 5. Execute os testes para validar</span>
+cd ../..
+node dio-explorer/tests/skills.test.js</pre>
+
+  <h3>.bobignore</h3>
+  <p>Arquivo que instrui o Bob a ignorar certos caminhos ao indexar o projeto:</p>
+  <pre>node_modules
+.env
+caches
+certificados gerados
+docs/
+*.tmp</pre>
+
+  
+  <h2 id="dados">11. Catálogo de Trilhas (30 trilhas)</h2>
+  <table>
+    <tr><th>ID</th><th>Título</th><th>Categoria</th><th>Nível</th><th>Horas</th></tr>
+    <tr><td>1</td><td>Fundamentos de Python</td><td>Programação</td><td>Iniciante</td><td>20h</td></tr>
+    <tr><td>2</td><td>Desenvolvimento Web com HTML, CSS e JavaScript</td><td>Front-end</td><td>Iniciante</td><td>40h</td></tr>
+    <tr><td>3</td><td>React do Zero ao Avançado</td><td>Front-end</td><td>Intermediário</td><td>60h</td></tr>
+    <tr><td>4</td><td>Back-end com Node.js e Express</td><td>Back-end</td><td>Intermediário</td><td>50h</td></tr>
+    <tr><td>5</td><td>Banco de Dados SQL com PostgreSQL</td><td>Banco de Dados</td><td>Iniciante</td><td>25h</td></tr>
+    <tr><td>6</td><td>DevOps com Docker e Kubernetes</td><td>DevOps</td><td>Avançado</td><td>70h</td></tr>
+    <tr><td>7</td><td>Cloud Computing com AWS</td><td>Cloud</td><td>Intermediário</td><td>55h</td></tr>
+    <tr><td>8</td><td>Machine Learning com Scikit-learn</td><td>Inteligência Artificial</td><td>Intermediário</td><td>45h</td></tr>
+    <tr><td>9</td><td>Deep Learning com TensorFlow</td><td>Inteligência Artificial</td><td>Avançado</td><td>80h</td></tr>
+    <tr><td>10</td><td>Desenvolvimento Mobile com Flutter</td><td>Mobile</td><td>Intermediário</td><td>60h</td></tr>
+    <tr><td>11</td><td>Java Completo: POO e Spring Boot</td><td>Back-end</td><td>Intermediário</td><td>75h</td></tr>
+    <tr><td>12</td><td>Segurança da Informação e Ethical Hacking</td><td>Segurança</td><td>Avançado</td><td>65h</td></tr>
+    <tr><td>13</td><td>Engenharia de Dados com Apache Spark</td><td>Data Engineering</td><td>Avançado</td><td>70h</td></tr>
+    <tr><td>14</td><td>TypeScript para Desenvolvedores JavaScript</td><td>Programação</td><td>Intermediário</td><td>30h</td></tr>
+    <tr><td>15</td><td>Angular: Framework Front-end Corporativo</td><td>Front-end</td><td>Intermediário</td><td>55h</td></tr>
+    <tr><td>16</td><td>Microserviços com Spring Cloud</td><td>Arquitetura</td><td>Avançado</td><td>65h</td></tr>
+    <tr><td>17</td><td>Data Science com Python</td><td>Ciência de Dados</td><td>Intermediário</td><td>50h</td></tr>
+    <tr><td>18</td><td>Git e GitHub para Iniciantes</td><td>Ferramentas</td><td>Iniciante</td><td>15h</td></tr>
+    <tr><td>19</td><td>Vue.js 3: Composição e Reatividade</td><td>Front-end</td><td>Intermediário</td><td>45h</td></tr>
+    <tr><td>20</td><td>CI/CD com GitHub Actions</td><td>DevOps</td><td>Intermediário</td><td>30h</td></tr>
+    <tr><td>21</td><td>MongoDB e NoSQL para Desenvolvedores</td><td>Banco de Dados</td><td>Iniciante</td><td>25h</td></tr>
+    <tr><td>22</td><td>Kotlin para Android</td><td>Mobile</td><td>Intermediário</td><td>55h</td></tr>
+    <tr><td>23</td><td>Inteligência Artificial Generativa com LLMs</td><td>Inteligência Artificial</td><td>Avançado</td><td>40h</td></tr>
+    <tr><td>24</td><td>Linux Essencial para Desenvolvedores</td><td>Infraestrutura</td><td>Iniciante</td><td>20h</td></tr>
+    <tr><td>25</td><td>C# e .NET: Desenvolvimento Completo</td><td>Back-end</td><td>Intermediário</td><td>70h</td></tr>
+    <tr><td>26</td><td>Power BI para Análise de Dados</td><td>Business Intelligence</td><td>Iniciante</td><td>30h</td></tr>
+    <tr><td>27</td><td>Arquitetura Hexagonal e Domain-Driven Design</td><td>Arquitetura</td><td>Avançado</td><td>50h</td></tr>
+    <tr><td>28</td><td>Terraform e Infraestrutura como Código</td><td>DevOps</td><td>Avançado</td><td>45h</td></tr>
+    <tr><td>29</td><td>Testes Automatizados com Jest e Cypress</td><td>Qualidade de Software</td><td>Intermediário</td><td>35h</td></tr>
+    <tr><td>30</td><td>Blockchain e Web3 para Desenvolvedores</td><td>Blockchain</td><td>Avançado</td><td>60h</td></tr>
+  </table>
+
+  
+  <h2 id="dicas">12. Dicas de Uso</h2>
+
+  <h3>Atalhos de skill</h3>
+  <div class="callout tip">
+    <strong>Use os atalhos direto:</strong> <code>/trilha Python</code> é mais rápido que
+    "pode me mostrar as trilhas de Python disponíveis no catálogo?". O resultado é o mesmo,
+    mas o atalho vai direto ao ponto.
+  </div>
+
+  <h3>Busca inteligente</h3>
+  <div class="callout tip">
+    <strong>A busca é ampla por design:</strong> Buscar "Java" retorna 9 trilhas porque o termo
+    aparece em títulos (<em>JavaScript</em>), tecnologias (<em>Java</em>) e outros campos.
+    Se quiser especificidade, use o nome exato: "Spring Boot", "Java Completo", "Node.js".
+  </div>
+
+  <h3>Certificados e salvamento</h3>
+  <div class="callout tip">
+    <strong>Salve o certificado:</strong> Após gerar, peça ao Bob para salvar em
+    <code>dio-explorer/docs/</code>. O arquivo ficará como referência permanente.
+  </div>
+
+  <h3>Desafios progressivos</h3>
+  <div class="callout tip">
+    <strong>Escale a dificuldade:</strong> Comece com <code>/desafio iniciante</code>,
+    resolva, e peça "aumenta o nível". O Bob gera o próximo desafio no nível intermediário.
+  </div>
+
+  <h3>Usando no modo Ask</h3>
+  <div class="callout">
+    <strong>Exploração sem código:</strong> No modo Ask, use prompts como
+    "Explica a arquitetura do servidor MCP desse projeto" ou "Quais tecnologias abrange
+    a categoria DevOps?" — o Bob lê os arquivos e responde sem modificar nada.
+  </div>
+
+  <h3>Atualizar o catálogo sem rebuild</h3>
+  <div class="callout tip">
+    <strong>Zero downtime:</strong> Edite <code>dio-explorer/data/trilhas.json</code>
+    para adicionar novas trilhas. O servidor lê o arquivo em runtime — não precisa
+    recompilar o TypeScript.
+  </div>
+
+  
+  <h2 id="insights">13. Insights para Futuros Profissionais</h2>
+  <p>Lições aprendidas construindo este projeto que se aplicam a qualquer produto de IA aplicada.</p>
+
+  <div class="insight-card">
+    <span class="num">1</span>
+    <span class="title">MCP transforma IA de conversa em agente funcional</span>
+    <p>O Model Context Protocol é a ponte que permite ao LLM chamar código real. Sem ele, o agente apenas "fala sobre" o catálogo. Com ele, o agente "age sobre" — busca, filtra, gera, salva. Dominar MCP é uma das habilidades mais valorizadas em IA aplicada de 2025 em diante.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="num">2</span>
+    <span class="title">Skills são a UX das ferramentas de IA</span>
+    <p>Uma ferramenta MCP bem escrita é código. Uma Skill bem escrita é produto. O mesmo <code>buscar_trilha</code> pode ser invocado via linguagem natural ou via <code>/trilha</code>. A Skill adiciona guia de uso, formato de saída e interação progressiva — isso é design de produto, não só engenharia.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="num">3</span>
+    <span class="title">Dados simples, lógica simples — evite over-engineering</span>
+    <p>O catálogo de trilhas é um único arquivo JSON. A busca é um simples <code>Array.filter()</code> com <code>includes()</code>. Não há banco de dados, não há índice invertido, não há Redis. Para 30 registros, isso é exatamente certo. Adicione complexidade quando os dados — não as suposições — justificarem.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="num">4</span>
+    <span class="title">Teste os scripts que o agente executa, não só o agente</span>
+    <p>O Bob orquestra, mas os scripts Node são o código que realmente roda. Os 36 testes cobrem os scripts diretamente — sem o Bob no meio. Isso garante que o comportamento fundamental é confiável independente de como o agente interpreta o comando.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="num">5</span>
+    <span class="title">Normalização de input é fundamental em agentes de IA</span>
+    <p>O usuário pode digitar "avancado", "avançado", "Avançado" ou "AVANCADO". O código normaliza via <code>.normalize("NFD").replace(/[\u0300-\u036f]/g, "")</code>. Em IA conversacional, nunca assuma que o input chegará no formato perfeito — escreva código defensivo.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="num">6</span>
+    <span class="title">TypeScript + MCP SDK = contrato claro entre ferramentas</span>
+    <p>O arquivo <code>types.ts</code> define interfaces para <code>Trilha</code>, <code>Desafio</code>, <code>Certificado</code> e <code>McpToolResult</code>. Isso cria um contrato que o compilador verifica em build time — erros aparecem antes do deploy, não em produção. Tipos são documentação executável.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="num">7</span>
+    <span class="title">O prompt certo economiza horas de código</span>
+    <p>A documentação deste projeto, os testes, as Skills, o servidor MCP — tudo foi construído em iterações de prompt com o Bob. Saber descrever <em>o que você quer</em> com precisão (contexto + objetivo + restrições) é tão importante quanto saber programar. O engenheiro do futuro é também um comunicador preciso.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="num">8</span>
+    <span class="title">Stdio é suficiente para começar. HTTP é quando você precisar escalar.</span>
+    <p>O servidor usa stdio — zero configuração de rede, zero autenticação. O projeto já tem <code>express</code>, <code>helmet</code> e <code>jsonwebtoken</code> instalados: a infraestrutura para HTTP com JWT está pronta para quando o projeto precisar servir múltiplos clientes simultaneamente. Construa simples, evolua quando necessário.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="num">9</span>
+    <span class="title">Agentes de IA são produtos, não demos</span>
+    <p>Este projeto tem testes (qualidade), documentação (manutenibilidade), separação de camadas (arquitetura), tratamento de erros (resiliência) e design pensado para o usuário final (UX). É a diferença entre um notebook de experimentação e um produto que outro desenvolvedor pode usar, manter e evoluir.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="num">10</span>
+    <span class="title">Construa para quem vem depois de você</span>
+    <p>Todo arquivo neste projeto tem comentários explicando <em>por quê</em>, não só <em>o quê</em>. O <code>SKILL.md</code> de cada skill detalha cada passo. O <code>README.md</code> do MCP explica a estrutura completa. Código sem contexto é um débito técnico. Contexto bem escrito é um presente para o próximo desenvolvedor — que pode ser você mesmo em 6 meses.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <footer>
+    Made with IBM Bob
+  </footer>
+
+</div>
+</body>
+</html>
